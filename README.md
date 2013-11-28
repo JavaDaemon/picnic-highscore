@@ -42,7 +42,7 @@ it easy to extend and rework things, such as the JSON required, and the JSON out
 
 Implementing the client
 -----------------------
-To interract with the highscore, all you have to do is send HTTP requests to it's location on your webserver.
+To interract with the highscore, all you have to do is send HTTP requests to its location on your webserver.
 Make sure to specify the request type.
 
 ### GET ###
