@@ -4,15 +4,14 @@ Picnic Highscore
 A super-simple RESTful highscore written in PHP
  
 This is a light script that you can put on your webserver, and it will turn it into an online highscoring table.
-The table through the HTTP protocol, using GET and POST requests to interract with it. All there is left to do, is to implement the client where you need it.
+The table is reachable through the HTTP protocol, using GET and POST requests to interract with it. All there is left to do, is to implement the client where you need it.
 
 
 Getting started
 ---------------
 
 The software contains just one core PHP script. 
-It is important that you specify your MySQL database within that file, as well as
-make sure your database has the table "highscores", setup correctly. 
+It is important that you specify your MySQL database within that file, as well as make sure your database has the table "highscores", setup correctly. 
 The table needs to have the following fields:
 
 <table>
