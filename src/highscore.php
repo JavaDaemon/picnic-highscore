@@ -50,6 +50,19 @@ function sendError($error) {
 		}
 }
 
+/*
+ * Posts a score to the database.
+ */
+function postScore($name, $score) {
+	connectDB();
+	$query = "
+		INSERT 
+			INTO highscores 
+				(name, score)
+				VALUES 
+				('".$name."', ".$score.")";
+	mysql_query($query);
+}
 
 // First, we identify what request has been made.
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -62,7 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			// Convert the input to an associative array.
 			$jsonData = json_decode($data, true);
 			
-			// Check for hackers
+			// Check for irregularities
 			if (!is_numeric($jsonData["score"])) {
 				sendError(400);
 				exit();
@@ -73,14 +86,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			$score = intval($jsonData["score"]);
 			
 			// Enter the data into the database
-			connectDB();
-			$query = "
-				INSERT 
-					INTO highscores 
-						(name, score)
-				VALUES 
-						(".$name.", ".$score.")";
-			mysql_query($query);
+			postScore($name, $score);
 			// We're done! Score submitted to the highscore table.
 		} else {
 			// The submission could not be translated to JSON.
